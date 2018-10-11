@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="shopCart.css">
+
+<title>Angular Shopping Cart</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+
+
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+<br>
+
+<h1>Angular Shopping Cart</h1>
+
+  <div ng-app="myApp" ng-controller="myCtrl" ng-init="running_total=0">
+
+  <p>Enter your budget</p>
+  <p>$ <input type="number" ng-model="budget"></p>
+
+
+<!--Add an item to the shopping cart-->
+  <p>Enter an item's name, quantity, and cost</p>
+  <label>Item name:</label>
+    <input type="string" placeholder="ex. bread" ng-model="item_name"></input><br></br>
+  <label>Item quantity:</label>
+    <input type="number" ng-model="item_quantity"></input><br></br>
+  <label>Item cost: $</label>
+    <input type="number" ng-model="item_cost"></input><br></br>
+
+<button ng-click="add_to_list()">ADD TO LIST</button>
+<br></br>
+
+
+<!--Display the shopping cart-->
+<table>
+  <thead>
+    <tr>
+      <th width="1%">Your Shopping Cart</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="rowContent in rows">
+      <td>{{rowContent}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+  <p>Your running total is ${{ running_total }}</p>
+  <p>Your budget is ${{ budget }}</p>
+
+<!--Change font color and statement based on adherence to budget-->
+  <h3 ng-class="{'under_budget' : running_total < budget, 'at_budget' : running_total === budget, 'over_budget' : running_total > budget}">{{ budget_statement }}</h3>
+
+   <span ng-if="under_budget" ng-init="under_budget=true"></span>
+
+  </div>
+
+
+<!--Add controller-->
+  <script src="myCtrl.js"></script>
+</body>
+</html>

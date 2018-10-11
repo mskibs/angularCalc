@@ -1,0 +1,21 @@
+body {
+
+text-align: center;
+
+}
+
+table {
+  align-content: center;
+}
+
+.under_budget {
+  color: green !important;
+}
+
+.at_budget {
+  color: orange;
+}
+
+.over_budget {
+  color: red;
+}
